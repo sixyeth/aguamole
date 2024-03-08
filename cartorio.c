@@ -15,7 +15,6 @@ int registro() //função responsável por cadastrar usuario no sistema
     
     printf("Digite o CPF a ser cadastrado: "); //escrevendo na tela
     scanf("%s", cpf); //salvando o cpf cadastrado
-    
     strcpy(arquivo, cpf); //responsavel por copiar os valores das strings
     
     FILE *file; //procura na bibliopteca e cria o arquivo
@@ -60,13 +59,10 @@ int registro() //função responsável por cadastrar usuario no sistema
 int consulta()
 {
     setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
-    
-	char cpf[40]; //armazena o CPF a ser consultado
+    char cpf[40]; //armazena o CPF a ser consultado
     char conteudo[200]; //armazena o conteudo do arquivo
-    
     printf("Digite o CPF a ser consultado: "); //escrevendo na tela, solicitando o CPF
-    scanf("%s",cpf); //armazena o CPF digitado
-    
+    scanf("%s",cpf); //armazena o CPF digitado    
     FILE *file; //ponteiro para o arquivo
     file = fopen(cpf,"r"); //abre o arquivo em modo leitura
     
