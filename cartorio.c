@@ -40,7 +40,6 @@ int registro() //função responsável por cadastrar usuario no sistema
     
     printf("Digite o sobrenome a ser cadastrado: "); //escrevendo na tela
     scanf("%s",sobrenome); //armazena o sobrenome digitado
-    
     file = fopen(arquivo,"a"); //escrevendo o sobrenome no arquivo
     fprintf(file,sobrenome); //salvando o sobrenome no arquivo
     fclose(file); //fecha o arquivo
@@ -50,8 +49,7 @@ int registro() //função responsável por cadastrar usuario no sistema
     fclose(file); //fecha o arquivo
     
     printf("Digite o cargo a ser cadastrado: "); //escrevendo na tela
-    scanf("%s",cargo);
-    
+    scanf("%s",cargo); //armazena o cargo digitado
     file = fopen(arquivo,"a"); //escrevendo o cargo no arquivo
     fprintf(file,cargo); //salva o cargo no arquivo
     fclose(file); //fecha o arquivo
@@ -111,52 +109,57 @@ int main()
 {
 	int opcao=0; //variável do menu
 	int laco=1; //variavel de controle de loop
-	
-	for(laco=1;laco=1;)
+	char senha[]="a"; //string da senha
+	int comparacao;
+	setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
+	printf("### Cartório Agua mole ### \n\n");
+	printf("Login do Administrador!\n\nDigite sua senha: "); //digitando a senha
+	scanf("%s",senha); //armazenando a senha do usuário	
+	comparacao = strcmp(senha,"admin"); //escolhendo a senha do sistema
+	if(comparacao == 0) //validando a senha
 	{
-		
 		system("cls"); //limpando a tela
-		
-        setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
-	
-	    printf("### Cartório Agua mole ### \n\n"); //inicio do menu
-	    printf("Escolha a opção desejada do Menu: \n\n");
-	    printf("\t1 - Registrar nomes\n");
-	    printf("\t2 - Consultar nomes\n");
-	    printf("\t3 - Deletar nomes\n"); 
-	    printf("\t4 - Sair do sistema\n");
-	    printf("Opção: "); //fim do menu
-	
-	    scanf("%d", &opcao); //armazenando a escolha do usuario
-	
-	    system("cls"); //responsavel por limpar a tela
+	    for(laco=1;laco=1;) //loop da variável
+	    {		
+		    system("cls"); //limpando a tela
+            setlocale(LC_ALL, "Portuguese"); //definindo a linguagem	
+	        printf("### Cartório Agua mole ### \n\n"); //inicio do menu
+	        printf("Escolha a opção desejada do Menu: \n\n");
+	        printf("\t1 - Registrar nomes\n");
+	        printf("\t2 - Consultar nomes\n");
+	        printf("\t3 - Deletar nomes\n"); 
+	        printf("\t4 - Sair do sistema\n");
+	        printf("Opção: "); //fim do menu
+				
+	        scanf("%d", &opcao); //armazenando a escolha do usuario
+	        system("cls"); //responsavel por limpar a tela
 	    
-	    
-	    switch(opcao) //inicio da seleção do menu
-	    {
-	    	case 1:
-	    	registro(); //chamada da função registro
-			break;
+	        switch(opcao) //inicio da seleção do menu
+	        {
+	    	    case 1:
+	    	    registro(); //chamada da função registro
+			    break;
 			
-			case 2:
-			consulta(); //chamada da função consulta
-		    break;
+			    case 2:
+			    consulta(); //chamada da função consulta
+		        break;
 		    
-		    case 3:
-		    deletar(); //chamada da função deletar
-		    break;
+		        case 3:
+		        deletar(); //chamada da função deletar
+		        break;
 		    
-		    case 4:
-		    printf("Obrigado por utilizar o sistema!"); 
-		    return 0; //agradecendo e fechando o programa
-		    break;
+		        case 4:
+		        printf("Obrigado por utilizar o sistema!"); 
+		        return 0; //agradecendo e fechando o programa
+		        break;
 		    
-		    default:
-		    printf("essa opção não tá disponível, tente novamente.\n");
-		    system("pause");
-		    break;
-		    	
-		}  //fim da seleção
-
+		        default:
+		        printf("essa opção não tá disponível, tente novamente.\n");
+		        system("pause");
+		        break;
+		    }  //fim da seleção
+        }
     }
+    else //texto caso a senha seja digitada errada
+        printf("Senha incorreta!");
 }
